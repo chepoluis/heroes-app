@@ -1,6 +1,11 @@
 import { useMemo } from "react";
 import { useParams, Navigate, useNavigate } from "react-router-dom"
+import { heroImages } from "../../helpers/heroImages";
 import { getHeroById } from "../../selectors/getHeroById";
+
+// Ejemplo de importacion de una imagen estatica
+// import spiderman from '../../assets/marvel-spider.jpg';
+// const heroImages = require.context('../../assets', true); // Esto viene de webpack
 
 export const Heroe = () => {
   const navigate = useNavigate();
@@ -26,13 +31,14 @@ export const Heroe = () => {
     characters
   } = heroe;
 
-  const imagePath = `/assets/${id}.jpg`;
+  // const imagePath = `/assets/${id}.jpg`; // Desde public/assets
 
   return (
     <div className="row mt-5">
       <div className="col-4">
-        <img 
-          src={ imagePath }
+        <img
+          // src={ imagePath }
+          src={ heroImages(`./${ heroeId }.jpg`) }
           alt={ superhero }
           className="img-thumbnail animate__animated animate__fadeInLeft"
         />
